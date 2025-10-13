@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sachin - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#home">Sachin Verma</a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <!-- <a href="#home" class="nav-link">Home</a> -->
+                <a href="#about" class="nav-link">About</a>
+                <a href="#portfolio" class="nav-link">Portfolio</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Hi, I'm <span class="highlight">Sachin Sachin</span>
+                </h1>
+                <h2 class="hero-subtitle">Senior Data Scientist</h2>
+                <p class="hero-description">
+                    I create beautiful, functional websites and applications that solve real-world problems. 
+                    Passionate about clean code, user experience, and continuous learning.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#portfolio" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+                <div class="hero-social">
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="image-placeholder">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">Get to know me better</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>I'm a passionate Data Scientist with a love for data and technologies</h3>
+                    <p>
+                        With over 9 years of experience in Data Science and Product development, I specialize in building 
+                        end to end AI ML solutions. I have a strong foundation in 
+                        both Statistics and Mathematics. I also have GenAI expertise and I'm always eager to learn new 
+                        tools and frameworks.
+                    </p>
+                    <p>
+                        I have understanding of system design and architecture. I am working towards full stack Data Scientist.
+                    </p>
+                    <p>
+                        When I'm not coding, you can find me exploring new technologies, contributing 
+                        to open source projects, or sharing knowledge with the developer community.
+                    </p>
+                    <div class="skills">
+                        <h4>Skills & Technologies</h4>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <i class="fab fa-html5"></i>
+                                <span>HTML5</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-css3-alt"></i>
+                                <span>CSS3</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-js-square"></i>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-react"></i>
+                                <span>React</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-node-js"></i>
+                                <span>Node.js</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-python"></i>
+                                <span>Python</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <h3>50+</h3>
+                        <p>Projects Completed</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>3+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>25+</h3>
+                        <p>Happy Clients</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section with Tabs -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">My work and experience</h2>
+                <p class="section-subtitle">Explore my work and experience</p>
+            </div>
+            
+            <!-- Tab Navigation -->
+            <div class="tab-navigation">
+                <button class="tab-btn active" data-tab="experience">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Experience</span>
+                </button>
+                <button class="tab-btn" data-tab="projects">
+                    <i class="fas fa-code"></i>
+                    <span>Projects</span>
+                </button>
+                <button class="tab-btn" data-tab="resume">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Resume</span>
+                </button>
+                <button class="tab-btn" data-tab="blogs">
+                    <i class="fas fa-blog"></i>
+                    <span>Blogs</span>
+                </button>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <!-- Experience Tab -->
+                <div class="tab-panel active" id="experience">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-header">
+                                    <h3>Senior Data Scientist</h3>
+                                    <span class="timeline-company">Tech Company Inc.</span>
+                                    <span class="timeline-date">2022 - Present</span>
+                                </div>
+                                <p>Leading data science initiatives and machine learning projects. Developed predictive models that improved business outcomes by 30%.</p>
+                                <div class="timeline-skills">
+                                    <span class="skill-tag">Python</span>
+                                    <span class="skill-tag">Machine Learning</span>
+                                    <span class="skill-tag">TensorFlow</span>
+                                    <span class="skill-tag">AWS</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-header">
+                                    <h3>Data Analyst</h3>
+                                    <span class="timeline-company">Analytics Solutions</span>
+                                    <span class="timeline-date">2020 - 2022</span>
+                                </div>
+                                <p>Analyzed large datasets to provide actionable insights. Created automated reporting systems and data visualization dashboards.</p>
+                                <div class="timeline-skills">
+                                    <span class="skill-tag">SQL</span>
+                                    <span class="skill-tag">Tableau</span>
+                                    <span class="skill-tag">R</span>
+                                    <span class="skill-tag">Power BI</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-header">
+                                    <h3>Junior Developer</h3>
+                                    <span class="timeline-company">StartupXYZ</span>
+                                    <span class="timeline-date">2019 - 2020</span>
+                                </div>
+                                <p>Developed web applications using modern frameworks. Collaborated with cross-functional teams to deliver high-quality software solutions.</p>
+                                <div class="timeline-skills">
+                                    <span class="skill-tag">JavaScript</span>
+                                    <span class="skill-tag">React</span>
+                                    <span class="skill-tag">Node.js</span>
+                                    <span class="skill-tag">MongoDB</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projects Tab -->
+                <div class="tab-panel" id="projects">
+                    <div class="projects-filter">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="web">Web Development</button>
+                        <button class="filter-btn" data-filter="ml">Machine Learning</button>
+                        <button class="filter-btn" data-filter="data">Data Science</button>
+                    </div>
+                    <div class="projects-grid">
+                        <div class="project-card" data-category="ml">
+                            <div class="project-image">
+                                <div class="image-placeholder">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <div class="project-overlay">
+                                    <h3>Predictive Analytics Platform</h3>
+                                    <p>Machine learning platform for business forecasting</p>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                        <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <h4>Predictive Analytics Platform</h4>
+                                <p>Built a comprehensive ML platform using Python, TensorFlow, and AWS. Improved prediction accuracy by 25%.</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">TensorFlow</span>
+                                    <span class="tech-tag">AWS</span>
+                                    <span class="tech-tag">Docker</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card" data-category="web">
+                            <div class="project-image">
+                                <div class="image-placeholder">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                                <div class="project-overlay">
+                                    <h3>E-commerce Platform</h3>
+                                    <p>Full-stack e-commerce solution with modern UI</p>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                        <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <h4>E-commerce Platform</h4>
+                                <p>Developed a complete e-commerce solution with React frontend and Node.js backend. Features include payment integration and admin dashboard.</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">React</span>
+                                    <span class="tech-tag">Node.js</span>
+                                    <span class="tech-tag">MongoDB</span>
+                                    <span class="tech-tag">Stripe</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card" data-category="data">
+                            <div class="project-image">
+                                <div class="image-placeholder">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                                <div class="project-overlay">
+                                    <h3>Data Visualization Dashboard</h3>
+                                    <p>Interactive dashboard for business intelligence</p>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                        <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <h4>Data Visualization Dashboard</h4>
+                                <p>Created an interactive dashboard using D3.js and Python. Provides real-time insights and automated reporting.</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">D3.js</span>
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">PostgreSQL</span>
+                                    <span class="tech-tag">Flask</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card" data-category="ml">
+                            <div class="project-image">
+                                <div class="image-placeholder">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="project-overlay">
+                                    <h3>Chatbot with NLP</h3>
+                                    <p>Intelligent chatbot using natural language processing</p>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                        <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <h4>AI Chatbot</h4>
+                                <p>Developed an intelligent chatbot using NLP and deep learning. Achieved 90% accuracy in customer query resolution.</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">NLTK</span>
+                                    <span class="tech-tag">TensorFlow</span>
+                                    <span class="tech-tag">FastAPI</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card" data-category="web">
+                            <div class="project-image">
+                                <div class="image-placeholder">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <div class="project-overlay">
+                                    <h3>Mobile App</h3>
+                                    <p>Cross-platform mobile application</p>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                        <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <h4>Task Management App</h4>
+                                <p>Built a cross-platform mobile app using React Native. Features include real-time sync and offline capabilities.</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">React Native</span>
+                                    <span class="tech-tag">Firebase</span>
+                                    <span class="tech-tag">Redux</span>
+                                    <span class="tech-tag">Expo</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card" data-category="data">
+                            <div class="project-image">
+                                <div class="image-placeholder">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <div class="project-overlay">
+                                    <h3>Data Pipeline</h3>
+                                    <p>Automated data processing pipeline</p>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                        <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <h4>ETL Data Pipeline</h4>
+                                <p>Created an automated ETL pipeline using Apache Airflow and Python. Processes millions of records daily.</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">Apache Airflow</span>
+                                    <span class="tech-tag">PostgreSQL</span>
+                                    <span class="tech-tag">Docker</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resume Tab -->
+                <div class="tab-panel" id="resume">
+                    <div class="resume-container">
+                        <div class="resume-header">
+                            <h3>Download My Resume</h3>
+                            <p>Get a detailed overview of my experience, skills, and achievements</p>
+                        </div>
+                        <div class="resume-actions">
+                            <a href="#" class="btn btn-primary" id="downloadResume">
+                                <i class="fas fa-download"></i>
+                                Download PDF
+                            </a>
+                            <a href="#" class="btn btn-secondary" id="viewResume">
+                                <i class="fas fa-eye"></i>
+                                View Online
+                            </a>
+                        </div>
+                        <div class="resume-preview">
+                            <div class="resume-section">
+                                <h4>Professional Summary</h4>
+                                <p>Experienced Data Scientist with 5+ years in machine learning, data analysis, and full-stack development. Passionate about creating data-driven solutions that drive business growth.</p>
+                            </div>
+                            <div class="resume-section">
+                                <h4>Key Skills</h4>
+                                <div class="skills-categories">
+                                    <div class="skill-category">
+                                        <h5>Programming Languages</h5>
+                                        <p>Python, JavaScript, R, SQL, Java</p>
+                                    </div>
+                                    <div class="skill-category">
+                                        <h5>Machine Learning</h5>
+                                        <p>TensorFlow, PyTorch, Scikit-learn, XGBoost</p>
+                                    </div>
+                                    <div class="skill-category">
+                                        <h5>Data Tools</h5>
+                                        <p>Pandas, NumPy, Matplotlib, Seaborn, Tableau</p>
+                                    </div>
+                                    <div class="skill-category">
+                                        <h5>Cloud & DevOps</h5>
+                                        <p>AWS, Docker, Kubernetes, CI/CD</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="resume-section">
+                                <h4>Education</h4>
+                                <div class="education-item">
+                                    <h5>Master of Science in Data Science</h5>
+                                    <p>University of Technology • 2018 - 2020</p>
+                                </div>
+                                <div class="education-item">
+                                    <h5>Bachelor of Computer Science</h5>
+                                    <p>State University • 2014 - 2018</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blogs Tab -->
+                <div class="tab-panel" id="blogs">
+                    <div class="blogs-container">
+                        <div class="blogs-header">
+                            <h3>My Latest Blog Posts</h3>
+                            <p>Sharing insights about data science, machine learning, and technology</p>
+                        </div>
+                        <div class="blogs-grid">
+                            <article class="blog-card">
+                                <div class="blog-image">
+                                    <div class="image-placeholder">
+                                        <i class="fas fa-brain"></i>
+                                    </div>
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <span class="blog-date">Dec 15, 2024</span>
+                                        <span class="blog-category">Machine Learning</span>
+                                    </div>
+                                    <h4>Building Scalable ML Pipelines with MLOps</h4>
+                                    <p>Learn how to create production-ready machine learning pipelines using modern MLOps practices and tools.</p>
+                                    <div class="blog-tags">
+                                        <span class="blog-tag">MLOps</span>
+                                        <span class="blog-tag">Docker</span>
+                                        <span class="blog-tag">Kubernetes</span>
+                                    </div>
+                                    <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </article>
+                            
+                            <article class="blog-card">
+                                <div class="blog-image">
+                                    <div class="image-placeholder">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <span class="blog-date">Dec 10, 2024</span>
+                                        <span class="blog-category">Data Science</span>
+                                    </div>
+                                    <h4>Advanced Data Visualization Techniques</h4>
+                                    <p>Explore creative ways to visualize complex datasets and tell compelling data stories that drive decision-making.</p>
+                                    <div class="blog-tags">
+                                        <span class="blog-tag">Visualization</span>
+                                        <span class="blog-tag">D3.js</span>
+                                        <span class="blog-tag">Python</span>
+                                    </div>
+                                    <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </article>
+                            
+                            <article class="blog-card">
+                                <div class="blog-image">
+                                    <div class="image-placeholder">
+                                        <i class="fas fa-code"></i>
+                                    </div>
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <span class="blog-date">Dec 5, 2024</span>
+                                        <span class="blog-category">Web Development</span>
+                                    </div>
+                                    <h4>Modern React Patterns and Best Practices</h4>
+                                    <p>Discover the latest React patterns, hooks, and best practices for building maintainable and performant applications.</p>
+                                    <div class="blog-tags">
+                                        <span class="blog-tag">React</span>
+                                        <span class="blog-tag">JavaScript</span>
+                                        <span class="blog-tag">Frontend</span>
+                                    </div>
+                                    <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </article>
+                            
+                            <article class="blog-card">
+                                <div class="blog-image">
+                                    <div class="image-placeholder">
+                                        <i class="fas fa-database"></i>
+                                    </div>
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <span class="blog-date">Nov 28, 2024</span>
+                                        <span class="blog-category">Data Engineering</span>
+                                    </div>
+                                    <h4>Building Robust Data Pipelines</h4>
+                                    <p>Learn how to design and implement fault-tolerant data pipelines that can handle large-scale data processing.</p>
+                                    <div class="blog-tags">
+                                        <span class="blog-tag">Data Pipeline</span>
+                                        <span class="blog-tag">Apache Airflow</span>
+                                        <span class="blog-tag">ETL</span>
+                                    </div>
+                                    <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="blogs-footer">
+                            <a href="#" class="btn btn-secondary">
+                                <i class="fas fa-external-link-alt"></i>
+                                View All Posts
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get In Touch</h2>
+                <!-- <p class="section-subtitle">Let's work together on your next project</p> -->
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>
+                        I'm always interested in new opportunities and exciting projects. 
+                        Whether you have a question or just want to say hi, I'll try my best 
+                        to get back to you!
+                    </p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>ds.sachin.verma@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Gurugram, India</span>
+                        </div>
+                    </div>
+                    <div class="contact-social">
+                        <a href="https://github.com/DS-VERMA-S" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="from_name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="from_email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Sachin Verma. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
