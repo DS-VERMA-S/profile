@@ -1,16 +1,10 @@
+// Multi-page Portfolio JavaScript
+
 // DOM Elements
 const navToggle = document.getElementById('nav-toggle');
 const navMenu = document.getElementById('nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
-const filterBtns = document.querySelectorAll('.filter-btn');
-const portfolioItems = document.querySelectorAll('.portfolio-item');
 const contactForm = document.getElementById('contactForm');
-
-// Tab Elements
-const tabBtns = document.querySelectorAll('.tab-btn');
-const tabPanels = document.querySelectorAll('.tab-panel');
-const projectCards = document.querySelectorAll('.project-card');
-const projectsFilterBtns = document.querySelectorAll('.projects-filter .filter-btn');
 
 // EmailJS Configuration
 // Replace these with your actual EmailJS credentials
@@ -20,14 +14,18 @@ const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
 
 // Initialize EmailJS
 (function() {
-    emailjs.init(EMAILJS_PUBLIC_KEY);
+    if (typeof emailjs !== 'undefined') {
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+    }
 })();
 
 // Mobile Navigation Toggle
-navToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    navToggle.classList.toggle('active');
-});
+if (navToggle) {
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        navToggle.classList.toggle('active');
+    });
+}
 
 // Close mobile menu when clicking on a link
 navLinks.forEach(link => {
@@ -37,120 +35,71 @@ navLinks.forEach(link => {
     });
 });
 
-// Smooth scrolling for navigation links
-navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-        
-        if (targetSection) {
-            const offsetTop = targetSection.offsetTop - 70; // Account for fixed navbar
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
+// Set active navigation link based on current page
+function setActiveNavLink() {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        const href = link.getAttribute('href');
+        if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+            link.classList.add('active');
         }
     });
-});
+}
 
-// Portfolio Filter (Legacy - keeping for compatibility)
-filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        // Remove active class from all buttons
-        filterBtns.forEach(b => b.classList.remove('active'));
-        // Add active class to clicked button
-        btn.classList.add('active');
-        
-        const filterValue = btn.getAttribute('data-filter');
-        
-        portfolioItems.forEach(item => {
-            if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                item.style.display = 'block';
-                item.style.animation = 'fadeIn 0.5s ease-in-out';
-            } else {
-                item.style.display = 'none';
-            }
-        });
-    });
-});
+// Initialize active navigation
+setActiveNavLink();
 
-// Tab Functionality
-tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const targetTab = btn.getAttribute('data-tab');
-        
-        // Remove active class from all tabs and panels
-        tabBtns.forEach(b => b.classList.remove('active'));
-        tabPanels.forEach(p => p.classList.remove('active'));
-        
-        // Add active class to clicked tab and corresponding panel
-        btn.classList.add('active');
-        document.getElementById(targetTab).classList.add('active');
-        
-        // Trigger animations for the active panel
-        const activePanel = document.getElementById(targetTab);
-        activePanel.style.opacity = '0';
-        activePanel.style.transform = 'translateY(20px)';
-        
-        setTimeout(() => {
-            activePanel.style.opacity = '1';
-            activePanel.style.transform = 'translateY(0)';
-        }, 50);
-    });
-});
+// Resume Print Functionality
+const printResumeBtn = document.getElementById('printResume');
 
-// Projects Filter within Projects Tab
-projectsFilterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        // Remove active class from all buttons
-        projectsFilterBtns.forEach(b => b.classList.remove('active'));
-        // Add active class to clicked button
-        btn.classList.add('active');
-        
-        const filterValue = btn.getAttribute('data-filter');
-        
-        projectCards.forEach(card => {
-            if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
-                card.style.display = 'block';
-                card.style.animation = 'fadeIn 0.5s ease-in-out';
-            } else {
-                card.style.display = 'none';
-            }
-        });
-    });
-});
-
-// Resume Download Functionality
-const downloadResumeBtn = document.getElementById('downloadResume');
-const viewResumeBtn = document.getElementById('viewResume');
-
-if (downloadResumeBtn) {
-    downloadResumeBtn.addEventListener('click', (e) => {
+if (printResumeBtn) {
+    printResumeBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        // Replace with your actual resume PDF URL
-        const resumeUrl = 'path/to/your/resume.pdf';
         
-        // Create a temporary link to download the file
-        const link = document.createElement('a');
-        link.href = resumeUrl;
-        link.download = 'Sachin_Verma_Resume.pdf';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        
-        showNotification('Resume download started!', 'success');
+        // Create a new window for printing the PDF
+        const printWindow = window.open('', '_blank');
+        printWindow.document.write(`
+            <html>
+                <head>
+                    <title>Resume - Sachin Verma</title>
+                    <style>
+                        body { margin: 0; padding: 20px; }
+                        iframe { width: 100%; height: 100vh; border: none; }
+                    </style>
+                </head>
+                <body>
+                    <iframe src="resume.pdf"></iframe>
+                </body>
+            </html>
+        `);
+        printWindow.document.close();
+        printWindow.print();
     });
 }
 
-if (viewResumeBtn) {
-    viewResumeBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        // Replace with your actual resume URL
-        const resumeUrl = 'path/to/your/resume.pdf';
-        window.open(resumeUrl, '_blank');
+// Skill Progress Animation
+function animateSkillBars() {
+    const skillBars = document.querySelectorAll('.skill-progress');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const progressBar = entry.target;
+                const width = progressBar.getAttribute('data-width');
+                progressBar.style.width = width;
+                observer.unobserve(progressBar);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    skillBars.forEach(bar => {
+        observer.observe(bar);
     });
 }
+
+// Initialize skill bar animation
+animateSkillBars();
 
 // Scroll animations
 const observerOptions = {
@@ -168,7 +117,7 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe elements for scroll animations
 document.addEventListener('DOMContentLoaded', () => {
-    const animatedElements = document.querySelectorAll('.section-header, .about-text, .about-stats, .portfolio-item, .contact-info, .contact-form');
+    const animatedElements = document.querySelectorAll('.section-header, .about-text, .about-stats, .highlight-card, .link-card, .timeline-item, .project-card, .skill-item, .publication-card, .certification-card, .contact-info, .contact-form, .faq-item');
     
     animatedElements.forEach(el => {
         el.classList.add('fade-in');
@@ -179,68 +128,78 @@ document.addEventListener('DOMContentLoaded', () => {
 // Navbar background on scroll
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-    } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-        navbar.style.boxShadow = 'none';
+    if (navbar) {
+        if (window.scrollY > 50) {
+            navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+            navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+        } else {
+            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            navbar.style.boxShadow = 'none';
+        }
     }
 });
 
 // Contact form handling with EmailJS
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    const formData = new FormData(contactForm);
-    const templateParams = {
-        from_name: formData.get('from_name'),
-        from_email: formData.get('from_email'),
-        subject: formData.get('subject'),
-        message: formData.get('message'),
-        to_email: 'your.email@example.com' // Replace with your email
-    };
-    
-    // Basic validation
-    if (!templateParams.from_name || !templateParams.from_email || !templateParams.subject || !templateParams.message) {
-        showNotification('Please fill in all fields', 'error');
-        return;
-    }
-    
-    if (!isValidEmail(templateParams.from_email)) {
-        showNotification('Please enter a valid email address', 'error');
-        return;
-    }
-    
-    // Check if EmailJS is properly configured
-    if (EMAILJS_SERVICE_ID === 'YOUR_SERVICE_ID' || EMAILJS_TEMPLATE_ID === 'YOUR_TEMPLATE_ID' || EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
-        showNotification('Email service not configured. Please check EmailJS setup.', 'error');
-        return;
-    }
-    
-    // Simulate form submission
-    const submitBtn = contactForm.querySelector('button[type="submit"]');
-    const originalText = submitBtn.textContent;
-    
-    submitBtn.innerHTML = '<span class="loading"></span> Sending...';
-    submitBtn.disabled = true;
-    
-    // Send email using EmailJS
-    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
-        .then((response) => {
-            console.log('Email sent successfully:', response);
-            showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
-            contactForm.reset();
-        })
-        .catch((error) => {
-            console.error('Email sending failed:', error);
-            showNotification('Failed to send message. Please try again or contact me directly.', 'error');
-        })
-        .finally(() => {
-            submitBtn.textContent = originalText;
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const formData = new FormData(contactForm);
+        const templateParams = {
+            from_name: formData.get('from_name'),
+            from_email: formData.get('from_email'),
+            subject: formData.get('subject'),
+            message: formData.get('message'),
+            to_email: 'ds.sachin.verma@gmail.com'
+        };
+        
+        // Basic validation
+        if (!templateParams.from_name || !templateParams.from_email || !templateParams.subject || !templateParams.message) {
+            showNotification('Please fill in all fields', 'error');
+            return;
+        }
+        
+        if (!isValidEmail(templateParams.from_email)) {
+            showNotification('Please enter a valid email address', 'error');
+            return;
+        }
+        
+        // Check if EmailJS is properly configured
+        if (EMAILJS_SERVICE_ID === 'YOUR_SERVICE_ID' || EMAILJS_TEMPLATE_ID === 'YOUR_TEMPLATE_ID' || EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+            showNotification('Email service not configured. Please check EmailJS setup.', 'error');
+            return;
+        }
+        
+        // Simulate form submission
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        
+        submitBtn.innerHTML = '<span class="loading"></span> Sending...';
+        submitBtn.disabled = true;
+        
+        // Send email using EmailJS
+        if (typeof emailjs !== 'undefined') {
+            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+                .then((response) => {
+                    console.log('Email sent successfully:', response);
+                    showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
+                    contactForm.reset();
+                })
+                .catch((error) => {
+                    console.error('Email sending failed:', error);
+                    showNotification('Failed to send message. Please try again or contact me directly.', 'error');
+                })
+                .finally(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                });
+        } else {
+            showNotification('Email service not available. Please contact me directly.', 'error');
+            submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
-        });
-});
+        }
+    });
+}
 
 // Email validation
 function isValidEmail(email) {
@@ -310,7 +269,7 @@ function showNotification(message, type = 'info') {
     }, 5000);
 }
 
-// Typing animation for hero title
+// Typing animation for hero title (only on home page)
 function typeWriter(element, text, speed = 100) {
     let i = 0;
     element.innerHTML = '';
@@ -326,43 +285,23 @@ function typeWriter(element, text, speed = 100) {
     type();
 }
 
-// Initialize typing animation when page loads
+// Initialize typing animation when page loads (only on home page)
 window.addEventListener('load', () => {
     const heroTitle = document.querySelector('.hero-title');
-    if (heroTitle) {
+    if (heroTitle && window.location.pathname.includes('index.html')) {
         const originalText = heroTitle.textContent;
         typeWriter(heroTitle, originalText, 50);
     }
 });
 
-// Parallax effect for hero section
+// Parallax effect for hero section (only on home page)
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const hero = document.querySelector('.hero');
-    if (hero) {
+    if (hero && window.location.pathname.includes('index.html')) {
         const rate = scrolled * -0.5;
         hero.style.transform = `translateY(${rate}px)`;
     }
-});
-
-// Skill items animation on scroll
-const skillItems = document.querySelectorAll('.skill-item');
-const skillObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-            setTimeout(() => {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }, index * 100);
-        }
-    });
-}, { threshold: 0.1 });
-
-skillItems.forEach(item => {
-    item.style.opacity = '0';
-    item.style.transform = 'translateY(20px)';
-    item.style.transition = 'all 0.6s ease';
-    skillObserver.observe(item);
 });
 
 // Counter animation for stats
@@ -387,87 +326,23 @@ function animateCounter(element, target, duration = 2000) {
 const statsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            const statNumbers = entry.target.querySelectorAll('.stat-item h3');
+            const statNumbers = entry.target.querySelectorAll('.stat-item h3, .stat-card h3');
             statNumbers.forEach(stat => {
-                const target = parseInt(stat.textContent);
-                animateCounter(stat, target);
+                const text = stat.textContent;
+                const target = parseInt(text);
+                if (!isNaN(target)) {
+                    animateCounter(stat, target);
+                }
             });
             statsObserver.unobserve(entry.target);
         }
     });
 }, { threshold: 0.5 });
 
-const statsSection = document.querySelector('.about-stats');
-if (statsSection) {
-    statsObserver.observe(statsSection);
-}
-
-// Portfolio item hover effects
-portfolioItems.forEach(item => {
-    item.addEventListener('mouseenter', () => {
-        item.style.transform = 'translateY(-10px) scale(1.02)';
-    });
-    
-    item.addEventListener('mouseleave', () => {
-        item.style.transform = 'translateY(0) scale(1)';
-    });
-});
-
-// Smooth reveal animation for sections
-const revealElements = document.querySelectorAll('.section-header, .about-content, .portfolio-grid, .contact-content');
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, { threshold: 0.1 });
-
-revealElements.forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'all 0.8s ease';
-    revealObserver.observe(el);
-});
-
-// Add CSS for fade-in animation
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
-    .notification {
-        animation: slideInRight 0.3s ease;
-    }
-    
-    @keyframes slideInRight {
-        from {
-            transform: translateX(100%);
-        }
-        to {
-            transform: translateX(0);
-        }
-    }
-`;
-document.head.appendChild(style);
-
-// Preloader (optional)
-window.addEventListener('load', () => {
-    const preloader = document.querySelector('.preloader');
-    if (preloader) {
-        preloader.style.opacity = '0';
-        setTimeout(() => {
-            preloader.style.display = 'none';
-        }, 500);
+const statsSections = document.querySelectorAll('.about-stats, .journey-stats, .stats-grid');
+statsSections.forEach(section => {
+    if (section) {
+        statsObserver.observe(section);
     }
 });
 
@@ -522,4 +397,117 @@ backToTopBtn.addEventListener('mouseenter', () => {
 backToTopBtn.addEventListener('mouseleave', () => {
     backToTopBtn.style.transform = 'translateY(0)';
     backToTopBtn.style.boxShadow = '0 5px 15px rgba(0, 123, 255, 0.3)';
+});
+
+// Add CSS for animations
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .notification {
+        animation: slideInRight 0.3s ease;
+    }
+    
+    @keyframes slideInRight {
+        from {
+            transform: translateX(100%);
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
+    
+    .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease;
+    }
+    
+    .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .loading {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: #fff;
+        animation: spin 1s ease-in-out infinite;
+        margin-right: 8px;
+    }
+    
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+`;
+document.head.appendChild(style);
+
+// Smooth reveal animation for sections
+const revealElements = document.querySelectorAll('.section-header, .about-content, .highlights-grid, .links-grid, .timeline, .projects-grid, .skills-grid, .publications-grid, .certifications-grid, .contact-content, .faq-grid');
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, { threshold: 0.1 });
+
+revealElements.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'all 0.8s ease';
+    revealObserver.observe(el);
+});
+
+// Preloader (optional)
+window.addEventListener('load', () => {
+    const preloader = document.querySelector('.preloader');
+    if (preloader) {
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 500);
+    }
+});
+
+// Page-specific functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    
+    // Initialize page-specific features
+    switch (currentPage) {
+        case 'index.html':
+        case '':
+            // Home page specific initialization
+            break;
+        case 'experience.html':
+            // Experience page specific initialization
+            break;
+        case 'projects.html':
+            // Projects page specific initialization
+            break;
+        case 'skills.html':
+            // Skills page specific initialization
+            animateSkillBars();
+            break;
+        case 'resume.html':
+            // Resume page specific initialization
+            break;
+        case 'contact.html':
+            // Contact page specific initialization
+            break;
+    }
 });
