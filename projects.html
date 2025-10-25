@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Sachin Verma</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Sachin Verma</a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="experience.html" class="nav-link">Experience</a>
+                <a href="projects.html" class="nav-link active">Projects</a>
+                <a href="skills.html" class="nav-link">Skills</a>
+                <a href="resume.html" class="nav-link">Resume</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">My Projects</h1>
+            <p class="page-subtitle">Professional and personal projects showcasing my skills</p>
+        </div>
+    </section>
+
+    <!-- Project Categories -->
+    <section class="projects-section">
+        <div class="container">
+            <!-- Professional Projects -->
+            <div class="project-category">
+                <div class="category-header">
+                    <h2 class="category-title">
+                        <i class="fas fa-briefcase"></i>
+                        Professional Projects
+                    </h2>
+                    <p class="category-subtitle">Projects developed in professional settings</p>
+                </div>
+                
+                <div class="projects-grid">
+                    <div class="project-card" data-category="llm">
+                        <div class="project-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <h3>LLM-based Document Extraction</h3>
+                                <p>AI-powered document data extraction system</p>
+                                <div class="project-links">
+                                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>LLM-based Document Extraction</h4>
+                            <p>Led development of an LLM-based project to extract data from documents, achieving 85% accuracy and 70% reduction in manual effort. Implemented advanced prompt engineering and RAG pipelines.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">LangChain</span>
+                                <span class="tech-tag">Prompt Engineering</span>
+                                <span class="tech-tag">RAG</span>
+                                <span class="tech-tag">AWS</span>
+                            </div>
+                            <div class="project-status">
+                                <span class="status-badge status-production">In Production</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card" data-category="etl">
+                        <div class="project-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <h3>ETL Data Ingestion Platform</h3>
+                                <p>Scalable data processing platform for shipping analytics</p>
+                                <div class="project-links">
+                                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>ETL Data Ingestion Platform</h4>
+                            <p>Spearheaded development of ETL data ingestion platform powering 25+ diverse data sources (PDF, web, Excel, APIs). Designed monitoring systems ensuring 99% data availability for flagship shipping analytics product.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">PySpark</span>
+                                <span class="tech-tag">AWS S3</span>
+                                <span class="tech-tag">ETL Pipelines</span>
+                                <span class="tech-tag">Monitoring</span>
+                            </div>
+                            <div class="project-status">
+                                <span class="status-badge status-production">In Production</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card" data-category="ml">
+                        <div class="project-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <h3>Commodity Grade Prediction</h3>
+                                <p>ML model for commodity classification</p>
+                                <div class="project-links">
+                                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Commodity Grade Prediction</h4>
+                            <p>Implemented ML model to predict commodity grades information from unstructured commodity descriptions coming from bill-of-lading dataset, achieving 100% reduction in manual effort.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Machine Learning</span>
+                                <span class="tech-tag">NLP</span>
+                                <span class="tech-tag">Statistical Modeling</span>
+                                <span class="tech-tag">MLOps</span>
+                            </div>
+                            <div class="project-status">
+                                <span class="status-badge status-production">In Production</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card" data-category="aml">
+                        <div class="project-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <h3>AML Transaction Screening</h3>
+                                <p>Anti-Money Laundering ML solution</p>
+                                <div class="project-links">
+                                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>AML Transaction Screening</h4>
+                            <p>Designed and built data science ML solution in Python for suspicious transaction screening, saving 60% time. Led team of scenario tuning framework and managed 43 AML scenarios migration from PL/SQL to HiveQL.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Machine Learning</span>
+                                <span class="tech-tag">PL/SQL</span>
+                                <span class="tech-tag">HiveQL</span>
+                                <span class="tech-tag">Statistics</span>
+                            </div>
+                            <div class="project-status">
+                                <span class="status-badge status-production">In Production</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card" data-category="nlp">
+                        <div class="project-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <h3>NLP Tech Support Framework</h3>
+                                <p>Deep learning framework for ticket analysis</p>
+                                <div class="project-links">
+                                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>NLP Tech Support Framework</h4>
+                            <p>Developed and deployed NLP and deep learning framework using LSTM and fine-tuned BERT to automate tech support ticket analysis. Achieved high accuracy and secured $200K deal, improving client satisfaction.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Deep Learning</span>
+                                <span class="tech-tag">NLP</span>
+                                <span class="tech-tag">BERT</span>
+                                <span class="tech-tag">LSTM</span>
+                            </div>
+                            <div class="project-status">
+                                <span class="status-badge status-production">In Production</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card" data-category="allocation">
+                        <div class="project-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <h3>Project Allocation Tool</h3>
+                                <p>Text classification for employee allocation</p>
+                                <div class="project-links">
+                                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Project Allocation Tool</h4>
+                            <p>Engineered a tool using text classification to streamline project allocation for idle employees, resulting in 40% time saved in allocation process.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Text Classification</span>
+                                <span class="tech-tag">Machine Learning</span>
+                                <span class="tech-tag">NLP</span>
+                                <span class="tech-tag">REST API</span>
+                            </div>
+                            <div class="project-status">
+                                <span class="status-badge status-production">In Production</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- Personal Projects -->
+            <div class="project-category">
+                <div class="category-header">
+                    <h2 class="category-title">
+                        <i class="fas fa-code"></i>
+                        Personal Projects
+                    </h2>
+                    <p class="category-subtitle">Side projects and learning experiments</p>
+                </div>
+                
+                <div class="projects-grid">
+                    <div class="project-card" data-category="kaggle">
+                        <div class="project-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <h3>Kaggle Competitions</h3>
+                                <p>Machine learning competitions and datasets</p>
+                                <div class="project-links">
+                                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Kaggle Competitions</h4>
+                            <p>Actively participating in Kaggle competitions to constantly upskill and keep up to date with industry knowledge. Working on various ML challenges across different domains.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Machine Learning</span>
+                                <span class="tech-tag">Deep Learning</span>
+                                <span class="tech-tag">Data Analysis</span>
+                                <span class="tech-tag">Statistics</span>
+                            </div>
+                            <div class="project-status">
+                                <span class="status-badge status-development">Ongoing</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card" data-category="prediction">
+                        <div class="project-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <h3>Sales Prediction Model</h3>
+                                <p>Pharmaceutical sales forecasting</p>
+                                <div class="project-links">
+                                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Sales Prediction Model</h4>
+                            <p>Worked on product sales prediction modeling project for a large pharmaceutical client, implementing advanced statistical models and time series analysis.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">R</span>
+                                <span class="tech-tag">Time Series</span>
+                                <span class="tech-tag">Statistical Modeling</span>
+                                <span class="tech-tag">Forecasting</span>
+                            </div>
+                            <div class="project-status">
+                                <span class="status-badge status-completed">Completed</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card" data-category="utilities">
+                        <div class="project-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <h3>Electricity Load Prediction</h3>
+                                <p>Power grid load forecasting system</p>
+                                <div class="project-links">
+                                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Electricity Load Prediction</h4>
+                            <p>Designed and deployed prediction model for electricity load movement in the North India region, helping optimize power grid operations and resource allocation.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Machine Learning</span>
+                                <span class="tech-tag">Time Series</span>
+                                <span class="tech-tag">Statistical Modeling</span>
+                                <span class="tech-tag">R</span>
+                            </div>
+                            <div class="project-status">
+                                <span class="status-badge status-completed">Completed</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card" data-category="infrastructure">
+                        <div class="project-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-road"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <h3>Electric Pole Lifecycle Prediction</h3>
+                                <p>Infrastructure maintenance prediction</p>
+                                <div class="project-links">
+                                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Electric Pole Lifecycle Prediction</h4>
+                            <p>Designed solution for predicting the life cycle of electric poles on subway grid, enabling proactive maintenance and reducing infrastructure failures.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Machine Learning</span>
+                                <span class="tech-tag">Predictive Modeling</span>
+                                <span class="tech-tag">R</span>
+                                <span class="tech-tag">Statistics</span>
+                            </div>
+                            <div class="project-status">
+                                <span class="status-badge status-completed">Completed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Statistics -->
+    <section class="project-stats">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Project Statistics</h2>
+                <p class="section-subtitle">Overview of my project portfolio</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>10+</h3>
+                    <p>Total Projects</p>
+                </div>
+                <div class="stat-item">
+                    <h3>6</h3>
+                    <p>Professional Projects</p>
+                </div>
+                <div class="stat-item">
+                    <h3>4</h3>
+                    <p>Personal Projects</p>
+                </div>
+                <div class="stat-item">
+                    <h3>$200K+</h3>
+                    <p>Deal Secured</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Sachin Verma. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="https://github.com/DS-VERMA-S" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-kaggle"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-medium"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
