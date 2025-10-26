@@ -94,6 +94,23 @@ body {
     cursor: pointer;
 }
 
+.nav-logo {
+    margin: 0;
+    line-height: 0;
+  }
+  
+  .nav-logo a {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  
+  .nav-logo img {
+    height: 40px;   /* match your navbar height */
+    width: auto;    /* keep aspect ratio */
+    display: block;
+  }
+
 .bar {
     width: 25px;
     height: 3px;

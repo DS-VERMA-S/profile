@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Why MLOps? The Business & Technical Case</title>
+  <meta name="description" content="Why MLOps matters — bridging the gap between ML experiments and production value. Practical guide and repo reference." />
+  <style>
+    /* Enhanced readability styles */
+    body { 
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      line-height: 1.8;
+      color: #2d3748;
+      padding: 40px;
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #f8f9fa;
+    }
+    article {
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    }
+    h1 { 
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #1a202c;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    h2 { 
+      font-size: 1.75rem;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      color: #2d3748;
+      font-weight: 600;
+    }
+    h3 { 
+      font-size: 1.25rem;
+      margin-top: 2rem;
+      color: #4a5568;
+      font-weight: 600;
+    }
+    p { 
+      font-size: 1rem;
+      margin: 0.9rem 0;
+      line-height: 1.4;
+    }
+    ul, ol {
+      margin: 1.2rem 0;
+      padding-left: 1.5rem;
+    }
+    li {
+      margin: 0.5rem 0;
+      line-height: 1.6;
+    }
+    blockquote { 
+      margin: 1.5rem 0;
+      padding: 1rem 1.5rem;
+      border-left: 4px solid #4299e1;
+      background-color: #ebf8ff;
+      color: #2c5282;
+      font-style: italic;
+      border-radius: 0 8px 8px 0;
+    }
+    a { 
+      color: #3182ce;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    a:hover {
+      border-bottom-color: #3182ce;
+    }
+    pre { 
+      background: #f7fafc;
+      padding: 1rem;
+      overflow: auto;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+    }
+    .meta { 
+      color: #718096;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+    .cta { 
+      margin-top: 2rem;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      background: #2b6cb0;
+      color: white;
+      display: inline-block;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .cta:hover {
+      background: #2c5282;
+    }
+    .repo { 
+      font-family: 'Consolas', 'Monaco', monospace;
+      background: #f7fafc;
+      padding: 1rem;
+      border-radius: 8px;
+      display: block;
+      margin: 1.5rem 0;
+      border: 1px solid #e2e8f0;
+    }
+    footer { 
+      margin-top: 3rem;
+      color: #718096;
+      font-size: 0.95rem;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      body {
+        padding: 20px;
+      }
+      article {
+        padding: 20px;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+
+    .text-small { font-size:1rem; }
+    .text-medium { font-size: 1.1rem; }
+    .text-large { font-size: 1.3rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Why MLOps? The Business & Technical Case</h1>
+    <h4>Series: MLOps Best Practices for Production Machine Learning — Part 1</h4>
+    <h5 class="meta">Published: July 2025 </h5>
+  </header>
+
+  <article>
+    <p>
+      <strong>Most of Data Science projects that look good in a notebook fail when the code, data, or assumptions meet real production constraints.</strong><br><br>
+      When I deployed my first machine learning model I had spent weeks fine-tuning. It worked perfectly in my local environment, metrics were great, predictions were accurate, everything seemed solid. But the moment it hit production, things did not look well for my model. Data formats didn’t match, logs were missing, and a subtle data drift caused predictions to go off-track. That model, which was supposed to solve a real business problem, became almost unusable.<br><br>
+      This is exactly why MLOps exists. Machine learning isn’t just about building models. It’s about making them work reliably in the real world.
+      MLOps brings the rigor of DevOps to ML. Automating workflows, ensuring reproducibility, tracking experiments, monitoring models in production, and handling changes gracefully. 
+      It transforms experimental notebooks into robust, maintainable systems that can scale.
+
+      
+    </p>
+
+    <blockquote>
+      If you can’t reproduce, monitor, and operate your model, you don’t have production ML you have a prototype.
+    </blockquote>
+
+    <h2>Short definition - What is MLOps?</h2>
+    <p>
+      MLOps (Machine Learning Operations) is the set of practices, processes and tools that make machine-learning systems reproducible, deployable, observable and maintainable at scale.
+      It’s DevOps applied to the ML lifecycle with additional responsibilities for data, experiments, models, drift and governance.
+    </p>
+
+    <h2>The real problem: experiments ≠ production</h2>
+    <p>
+      You and your team may be shipping notebooks that perform well on test data. That’s irrelevant unless you can:
+    </p>
+    <ul>
+      <li>Reproduce the exact training run (code, data, hyperparameter, RNG seeds).</li>
+      <li>Package the model as an artifact that services can call.</li>
+      <li>Monitor data quality and model performance in production and retrain when needed.</li>
+    </ul>
+    <p>
+      A large fraction of ML/AI initiatives never reach production or deliver measurable business impact. Multiple industry surveys and analyses place the figure in the high 70–90% range depending on the definition and sample. The underlying causes are predictable: data quality, poor engineering practices, lack of monitoring, and organizational misalignment.
+    </p>
+
+    <h2>Why you need MLOps - the business case</h2>
+    <p>
+      On paper, building a machine learning model is the hard part. Ground reality is different, delivering business value is the hard part. Without MLOps, organizations face following challenges:
+    </p>
+    <ol>
+      <li><strong>Deployment Bottlenecks:</strong> Models sit in the notebooks while business needs to move fast. Translating code into production is slow, error-prone, and expensive.</li>
+      <li><strong>Lack of Reproducibility:</strong> Different teams can't reproduce experiments, causing wasted time and inconsistent results.</li>
+      <li><strong>Monitoring Gaps:</strong> Models degrade over time due to data drift, but without proper monitoring, failures are often discovered too late.</li>
+      <li><strong>Inefficient Collaboration:</strong> Data scientists, engineers, and stakeholders operate in silos, leading to duplicated effort and misaligned priorities.</li>
+      <li><strong>Regulatory & Compliance Risks:</strong> In industries like finance, healthcare, and insurance, untracked or unversioned models create legal and operational risks.</li>
+    </ol>
+    <p class="text-small">
+      The outcome? Delays, higher costs, poor model performance, and lost business opportunities.
+      MLOps solves these challenges by creating a structured, automated, and observable pipeline from experimentation to production. It ensures your models deliver real business impact reliably, at scale, and continuously not just in isolated experiments.
+    </p>
+
+    <!-- <h2>How this repo maps to MLOps: quick reference</h2>
+    <p class="repo">
+      Repository: <a href="https://github.com/sacvik/mlops-learn-by-building" target="_blank" rel="noopener">github.com/sacvik/mlops-learn-by-building</a>
+    </p>
+    <p>
+      The repository you supplied is built as a "learn-by-building" path where each module maps to stages of a production ML lifecycle: project layout, experiment tracking, model packaging, CI/CD and monitoring. Use the repo as an executable checklist: every time the readme says "do X", ask whether X can be automated, testable and observable.
+    </p> -->
+
+    <h2> Checklist which can apply to any ML project</h2>
+    <p>Follow these steps before you call the model production-ready</p>
+    <ul>
+      <li>Store raw and processed data with versioning (so you can reproduce model training).</li>
+      <li>Use experiment tracking framework like MLFlow (Data, Weights & Biases, Model etc) and commit the run id to your model artifact.</li>
+      <li>Apply unit and integration tests to data processing and prediction code (not just model metrics).</li>
+      <li>Package models as artifacts with metadata (model type, version, training data id, commit hash).</li>
+      <li>Automate deployment with CI/CD pipelines and include canary/blue-green strategies for safety.</li>
+      <li>Implement monitoring for input data distributions, feature drift, latency and prediction quality.</li>
+      <li>Define retraining and rollback policies up front (what metric drop triggers retrain/rollback?).</li>
+    </ul>
+
+    <h2>Common objections and why they're wrong?</h2>
+    <h3>“We're small - we can handle manual steps.”</h3>
+    <p>
+      Manual works once. It fails silently across teams and time. You'll pay back the cost of automating in reduced firefighting and faster iteration. The right approach is incremental, automate the highest-risk steps first (data ingestion, model training reproducibility, and deployment).
+    </p>
+
+    <h3>“MLOps tooling is too heavy.”</h3>
+    <p>
+      MLOps tooling is a spectrum. Start with simple, well-understood tools: Git for code, a remote artifact store (S3, GCS), MLflow or a minimal experiment tracker, and a CI pipeline that runs tests. Don't adopt an enterprise stack before you need it, adopt patterns and evolve tools as scale demands. Industry guides from cloud providers and platform vendors summarize the same pragmatic approach.
+    </p>
+
+    <h4>
+      All the above topics we have discussed above are very challenges I have faced while working on Data Science project. To summarize everything, this series will help you understand basic to advance concepts in MLOps.
+      For this I will be keep working on new content and step by step we will learn MLOps concepts.
+    </h4>
+
+    <!-- <h4>What this series will cover (brief)</h4>
+    <p>
+      Over the next posts I'll implement the checklist above:
+    </p>
+    <ol>
+      <li>Project structure & versioning (this sets reproducibility).</li>
+      <li>Experimentation & model registry (tracking and promotion).</li>
+      <li>Packaging, CI/CD and deployment patterns.</li>
+      <li>Monitoring, logging and drift detection in production.</li>
+      <li>Governance, security and maintenance (retraining, retiring models).</li>
+    </ol>
+    <p>
+      Each post will include concrete code snippets, repo pointers and a short production checklist you can apply to your projects.
+    </p>
+
+    <h4>Immediate next steps</h4>
+    <p>
+      If you want hands-on: open the repo, run the example in the README, and identify one manual step that blocks repeatable training (e.g., manual data copy, manual parameter selection, or manual model packaging). We’ll automate that exact step in Part 2.
+    </p>
+
+    <a class="cta" href="https://github.com/sacvik/mlops-learn-by-building" target="_blank" rel="noopener">Open the repo on GitHub</a>
+
+    <footer>
+      Key sources: the repository README and industry primers on MLOps and production failures.  
+      Repo README: github.com/sacvik/mlops-learn-by-building.
+      MLOps primers: AWS, Google Cloud, Databricks.  
+      Industry failure analyses (high % of models not reaching production).
+    </footer> -->
+  </article>
+</body>
+</html>
