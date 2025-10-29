@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Category - Sachin Verma</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .category-hero {
+            min-height: 40vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.1)" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .category-hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            width: 100%;
+        }
+
+        .category-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .category-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .back-button:hover {
+            opacity: 0.8;
+        }
+
+        .category-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .blog-articles {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border-color: #007bff;
+        }
+
+        .article-card-header {
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            padding: 2rem;
+            color: white;
+            min-height: 120px;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .article-card h3 {
+            font-size: 1.3rem;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .article-card-body {
+            padding: 1.5rem;
+        }
+
+        .article-card p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-card-link {
+            display: inline-block;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .article-card-link:hover {
+            color: #0056b3;
+            transform: translateX(5px);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #999;
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .coming-soon-badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #333;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .category-hero h1 {
+                font-size: 2rem;
+            }
+
+            .category-hero p {
+                font-size: 1rem;
+            }
+
+            .blog-articles {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="images/logo.jpg" alt="Logo">
+                </a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="index.html#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
+                <li class="nav-item"><a href="experience.html" class="nav-link">Experience</a></li>
+                <li class="nav-item"><a href="skills.html" class="nav-link">Skills</a></li>
+                <li class="nav-item"><a href="blog.html" class="nav-link active">Blog</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Category Hero Section -->
+    <section class="category-hero">
+        <div class="category-hero-content">
+            <a href="blog.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Back to Blog
+            </a>
+            <h1 id="categoryTitle">Loading...</h1>
+            <p id="categoryDescription">Exploring blog articles in this category</p>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section class="category-section">
+        <div class="container">
+            <div class="blog-articles" id="articlesContainer">
+                <div class="empty-state">
+                    <div class="empty-state-icon">
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </div>
+                    <p>Loading articles...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: #333; color: white; text-align: center; padding: 2rem; margin-top: 4rem;">
+        <p>&copy; 2024 Sachin Verma. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Blog categories mapping
+        const categoryData = {
+            "ml-foundations": {
+                name: "ML Foundations",
+                description: "Explore the fundamental concepts of Machine Learning",
+                icon: "fas fa-brain",
+                folder: "ML Foundations"
+            },
+            "mlops": {
+                name: "MLOps",
+                description: "Master the operations and deployment of ML models",
+                icon: "fas fa-cogs",
+                folder: "MLOps"
+            },
+            "statistical-foundation": {
+                name: "Statistical Foundation",
+                description: "Understand statistical concepts and probability",
+                icon: "fas fa-chart-bar",
+                folder: "Statistical Foundation"
+            }
+        };
+
+        // Sample articles for each category
+        const articlesData = {
+            "ml-foundations": [
+                {
+                    title: "Introduction to Machine Learning",
+                    description: "Learn the basics of machine learning, including supervised and unsupervised learning paradigms.",
+                    link: "#",
+                    status: "coming-soon"
+                },
+                {
+                    title: "Neural Networks Explained",
+                    description: "Deep dive into how neural networks work and their applications in modern AI.",
+                    link: "#",
+                    status: "coming-soon"
+                },
+                {
+                    title: "Feature Engineering Best Practices",
+                    description: "Master the art of creating meaningful features for your ML models.",
+                    link: "#",
+                    status: "coming-soon"
+                }
+            ],
+            "mlops": [
+                {
+                    title: "Why MLOps Matters",
+                    description: "Understanding the importance of MLOps in production machine learning systems.",
+                    link: "blogs/MLOps/part-1-why-mlops.html",
+                    status: "published"
+                },
+                {
+                    title: "Model Deployment Strategies",
+                    description: "Explore different approaches to deploying ML models in production environments.",
+                    link: "#",
+                    status: "coming-soon"
+                },
+                {
+                    title: "Monitoring ML Models",
+                    description: "Learn how to monitor and maintain your ML models in production.",
+                    link: "#",
+                    status: "coming-soon"
+                }
+            ],
+            "statistical-foundation": [
+                {
+                    title: "Probability Distributions",
+                    description: "Understand common probability distributions and their applications.",
+                    link: "#",
+                    status: "coming-soon"
+                },
+                {
+                    title: "Hypothesis Testing 101",
+                    description: "Master the fundamentals of statistical hypothesis testing.",
+                    link: "#",
+                    status: "coming-soon"
+                },
+                {
+                    title: "Regression Analysis",
+                    description: "Learn how to use regression analysis for statistical modeling.",
+                    link: "#",
+                    status: "coming-soon"
+                },
+                {
+                    title: "Dimensionality Reduction",
+                    description: "Learn how to use regression analysis for statistical modeling.",
+                    link: "#",
+                    status: "coming-soon"
+                },
+                {
+                    title: "Dimensionality Reduction",
+                    description: "Learn how to use regression analysis for statistical modeling.",
+                    link: "#",
+                    status: "coming-soon"
+                },
+                {
+                    title: "Dimensionality Reduction",
+                    description: "Learn how to use regression analysis for statistical modeling.",
+                    link: "#",
+                    status: "coming-soon"
+                }
+            ]
+        };
+
+        // Get category from URL
+        function getCategoryFromURL() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('category') || 'ml-foundations';
+        }
+
+        // Load and display category articles
+        function loadCategoryArticles() {
+            const category = getCategoryFromURL();
+            const catData = categoryData[category];
+            const articles = articlesData[category] || [];
+
+            if (!catData) {
+                document.getElementById('categoryTitle').textContent = 'Category Not Found';
+                document.getElementById('categoryDescription').textContent = 'The requested category could not be found.';
+                document.getElementById('articlesContainer').innerHTML = `
+                    <div class="empty-state" style="grid-column: 1 / -1;">
+                        <div class="empty-state-icon">
+                            <i class="fas fa-exclamation-circle"></i>
+                        </div>
+                        <p>Category not found. <a href="blog.html">Return to blog</a></p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Update hero section
+            document.getElementById('categoryTitle').textContent = catData.name;
+            document.getElementById('categoryDescription').textContent = catData.description;
+
+            // Clear and populate articles
+            const container = document.getElementById('articlesContainer');
+            container.innerHTML = '';
+
+            if (articles.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state" style="grid-column: 1 / -1;">
+                        <div class="empty-state-icon">
+                            <i class="fas fa-inbox"></i>
+                        </div>
+                        <p>No articles available in this category yet.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            articles.forEach(article => {
+                const card = document.createElement('div');
+                card.className = 'article-card';
+                
+                const statusHTML = article.status === 'coming-soon' 
+                    ? '<span class="coming-soon-badge">Coming Soon</span>'
+                    : '';
+                
+                const linkHTML = article.status === 'published'
+                    ? `<a href="${article.link}" class="article-card-link">Read Article <i class="fas fa-arrow-right"></i></a>`
+                    : '<span class="article-card-link" style="opacity: 0.5; cursor: not-allowed;">Coming Soon</span>';
+
+                card.innerHTML = `
+                    <div class="article-card-header">
+                        <h3>${article.title}</h3>
+                    </div>
+                    <div class="article-card-body">
+                        <p>${article.description}</p>
+                        ${linkHTML}
+                        ${statusHTML}
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Load articles when page loads
+        document.addEventListener('DOMContentLoaded', loadCategoryArticles);
+    </script>
+</body>
+</html>

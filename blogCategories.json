@@ -1,0 +1,26 @@
+[
+  {
+    "id": "ml-foundations",
+    "name": "ML Foundations",
+    "icon": "fas fa-brain",
+    "description": "Explore the fundamental concepts of Machine Learning",
+    "color": "#007bff",
+    "link": "blog-category.html?category=ml-foundations"
+  },
+  {
+    "id": "mlops",
+    "name": "MLOps",
+    "icon": "fas fa-cogs",
+    "description": "Master the operations and deployment of ML models",
+    "color": "#0056b3",
+    "link": "blog-category.html?category=mlops"
+  },
+  {
+    "id": "statistical-foundation",
+    "name": "Statistical Foundation",
+    "icon": "fas fa-chart-bar",
+    "description": "Understand statistical concepts and probability",
+    "color": "#1e3a5f",
+    "link": "blog-category.html?category=statistical-foundation"
+  }
+]

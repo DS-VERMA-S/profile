@@ -8,9 +8,9 @@ const contactForm = document.getElementById('contactForm');
 
 // EmailJS Configuration
 // Replace these with your actual EmailJS credentials
-const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
-const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
+const EMAILJS_SERVICE_ID = 'service_u2n07lq';
+const EMAILJS_TEMPLATE_ID = 'template_zv7bynn';
+const EMAILJS_PUBLIC_KEY = 'sEpv2sOpjUVxLlW4r';
 
 // Initialize EmailJS
 (function() {
@@ -150,7 +150,7 @@ if (contactForm) {
             from_email: formData.get('from_email'),
             subject: formData.get('subject'),
             message: formData.get('message'),
-            to_email: 'ds.sachin.verma@gmail.com'
+            to_email: 'sacvik23@gmail.com'
         };
         
         // Basic validation

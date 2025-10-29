@@ -1,0 +1,304 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Sachin Verma</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .blog-hero {
+            min-height: 40vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.1)" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .blog-hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            width: 100%;
+        }
+
+        .blog-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .blog-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .blog-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .blog-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 3px solid #e8e8e8;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 123, 255, 0.05) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            border-color: #007bff;
+            box-shadow: 0 10px 30px rgba(0, 123, 255, 0.2);
+        }
+
+        .blog-card:hover::before {
+            opacity: 1;
+        }
+
+        .blog-card-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .blog-card:hover .blog-card-icon {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4);
+        }
+
+        .blog-card h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .blog-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .blog-card-arrow {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #007bff;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-card:hover .blog-card-arrow {
+            transform: translateX(5px);
+        }
+
+        .blog-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #999;
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 768px) {
+            .blog-hero h1 {
+                font-size: 2rem;
+            }
+
+            .blog-hero p {
+                font-size: 1rem;
+            }
+
+            .blog-categories {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="nav-logo">
+                Sachin Verma
+            </h1>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="experience.html" class="nav-link">Experience</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="skills.html" class="nav-link">Skills</a>
+                <a href="resume.html" class="nav-link">Resume</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="blog-hero">
+        <div class="blog-hero-content">
+            <h1>My Blog</h1>
+            <p>Explore my thoughts and insights on machine learning, data science, and technology</p>
+        </div>
+    </section>
+
+    <!-- Blog Categories Section -->
+    <section class="blog-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Blog Categories</h2>
+                <p class="section-subtitle">Choose a topic to explore articles and insights</p>
+            </div>
+
+            <div class="blog-categories" id="blogCategories">
+                <!-- Cards will be dynamically generated here -->
+                <div class="empty-state">
+                    <div class="empty-state-icon">
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </div>
+                    <p>Loading blog categories...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: #333; color: white; text-align: center; padding: 2rem; margin-top: 4rem;">
+        <p>&copy; 2024 Sachin Verma. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Blog categories data
+        const blogCategories = [
+            {
+                id: "ml-foundations",
+                name: "ML Foundations",
+                icon: "fas fa-brain",
+                description: "Explore the fundamental concepts of Machine Learning",
+                color: "#007bff",
+                link: "blog-category.html?category=ml-foundations"
+            },
+            {
+                id: "mlops",
+                name: "MLOps",
+                icon: "fas fa-cogs",
+                description: "Master the operations and deployment of ML models",
+                color: "#0056b3",
+                link: "blog-category.html?category=mlops"
+            },
+            {
+                id: "statistical-foundation",
+                name: "Statistical Foundation",
+                icon: "fas fa-chart-bar",
+                description: "Understand statistical concepts and probability",
+                color: "#1e3a5f",
+                link: "blog-category.html?category=statistical-foundation"
+            }
+        ];
+
+        // Load and display blog categories
+        function loadBlogCategories() {
+            const container = document.getElementById('blogCategories');
+            container.innerHTML = ''; // Clear loading state
+
+            if (blogCategories.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state" style="grid-column: 1 / -1;">
+                        <div class="empty-state-icon">
+                            <i class="fas fa-inbox"></i>
+                        </div>
+                        <p>No blog categories available yet.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            blogCategories.forEach(category => {
+                const card = document.createElement('a');
+                card.href = category.link;
+                card.className = 'blog-card blog-card-link';
+                card.innerHTML = `
+                    <div class="blog-card-icon">
+                        <i class="${category.icon}"></i>
+                    </div>
+                    <h3>${category.name}</h3>
+                    <p>${category.description}</p>
+                    <span class="blog-card-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </span>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Load categories when page loads
+        document.addEventListener('DOMContentLoaded', loadBlogCategories);
+    </script>
+</body>
+</html>
